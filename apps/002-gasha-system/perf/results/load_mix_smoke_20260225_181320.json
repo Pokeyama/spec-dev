@@ -1,0 +1,203 @@
+{
+    "metrics": {
+        "http_reqs": {
+            "rate": 2521.235709867401,
+            "count": 12625
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 12625,
+            "thresholds": {
+                "rate<0.0001": false
+            },
+            "value": 0
+        },
+        "iteration_duration": {
+            "med": 11.564958,
+            "max": 28.258084,
+            "p(90)": 13.6592414,
+            "p(95)": 14.571004499999999,
+            "avg": 11.339312275028343,
+            "min": 5.067709
+        },
+        "vus_max": {
+            "max": 6,
+            "value": 6,
+            "min": 6
+        },
+        "http_req_waiting": {
+            "avg": 2.295934109306929,
+            "min": 0.198959,
+            "med": 1.55925,
+            "max": 20.160292,
+            "p(90)": 5.094508,
+            "p(95)": 5.6650328
+        },
+        "http_req_connecting": {
+            "min": 0,
+            "med": 0,
+            "max": 0.646916,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0002719768712871287
+        },
+        "http_req_receiving": {
+            "med": 0.009458,
+            "max": 2.849416,
+            "p(90)": 0.047924800000000024,
+            "p(95)": 0.07369139999999995,
+            "avg": 0.02237828396039599,
+            "min": 0.003
+        },
+        "checks": {
+            "passes": 15272,
+            "fails": 0,
+            "value": 1
+        },
+        "iterations": {
+            "count": 2647,
+            "rate": 528.6107662589316
+        },
+        "http_req_duration": {
+            "min": 0.20525,
+            "med": 1.585417,
+            "max": 20.173,
+            "p(90)": 5.1186834,
+            "p(95)": 5.684441599999998,
+            "avg": 2.322583950574258,
+            "thresholds": {
+                "p(95)<700": false
+            }
+        },
+        "http_req_sending": {
+            "p(90)": 0.005583,
+            "p(95)": 0.011116799999999977,
+            "avg": 0.004271557306930587,
+            "min": 0.001167,
+            "med": 0.002167,
+            "max": 0.9225
+        },
+        "http_req_blocked": {
+            "avg": 0.0020499081188118592,
+            "min": 0.000416,
+            "med": 0.00075,
+            "max": 1.219167,
+            "p(90)": 0.001583,
+            "p(95)": 0.00325
+        },
+        "data_received": {
+            "count": 72305761,
+            "rate": 14439593.398997042
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 2.322583950574258,
+            "min": 0.20525,
+            "med": 1.585417,
+            "max": 20.173,
+            "p(90)": 5.1186834,
+            "p(95)": 5.684441599999998
+        },
+        "data_sent": {
+            "count": 2258544,
+            "rate": 451035.3889193473
+        },
+        "vus": {
+            "value": 6,
+            "min": 6,
+            "max": 6
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "mix user regist 201": {
+                    "name": "mix user regist 201",
+                    "path": "::mix user regist 201",
+                    "id": "c2b34233ad10d3ff0d541d3246f2632a",
+                    "passes": 2037,
+                    "fails": 0
+                },
+                "mix admin regist 201": {
+                    "name": "mix admin regist 201",
+                    "path": "::mix admin regist 201",
+                    "id": "88b044f1033bb514a55a5443867328fe",
+                    "passes": 610,
+                    "fails": 0
+                },
+                "mix user login 200": {
+                    "name": "mix user login 200",
+                    "path": "::mix user login 200",
+                    "id": "30d86333e19dd803457446a8389b0c8a",
+                    "passes": 2037,
+                    "fails": 0
+                },
+                "mix user token": {
+                    "id": "75f28180a77f000ef29440f741d9c39c",
+                    "passes": 2037,
+                    "fails": 0,
+                    "name": "mix user token",
+                    "path": "::mix user token"
+                },
+                "mix admin login 200": {
+                    "name": "mix admin login 200",
+                    "path": "::mix admin login 200",
+                    "id": "3183ec4610e8ead58f468f0d3920573b",
+                    "passes": 610,
+                    "fails": 0
+                },
+                "mix admin token": {
+                    "path": "::mix admin token",
+                    "id": "29534bb6b3fbb002c5883343e26a0693",
+                    "passes": 610,
+                    "fails": 0,
+                    "name": "mix admin token"
+                },
+                "mix admin list 200": {
+                    "name": "mix admin list 200",
+                    "path": "::mix admin list 200",
+                    "id": "637bfea11cc523636f5457ab0ceaba87",
+                    "passes": 610,
+                    "fails": 0
+                },
+                "mix admin detail 200": {
+                    "name": "mix admin detail 200",
+                    "path": "::mix admin detail 200",
+                    "id": "78d5c49cd1342cb31e185e01cc988c97",
+                    "passes": 610,
+                    "fails": 0
+                },
+                "mix user gasha 200": {
+                    "name": "mix user gasha 200",
+                    "path": "::mix user gasha 200",
+                    "id": "d685e9aed0a1724e6a2bb0c77d944010",
+                    "passes": 2037,
+                    "fails": 0
+                },
+                "mix user inventory 200": {
+                    "path": "::mix user inventory 200",
+                    "id": "acbdb2cfb010c53e6030b63e3a911ebf",
+                    "passes": 2037,
+                    "fails": 0,
+                    "name": "mix user inventory 200"
+                },
+                "mix user logout 200": {
+                    "name": "mix user logout 200",
+                    "path": "::mix user logout 200",
+                    "id": "04987ef17bb2064aa77a3e1fa1af4a34",
+                    "passes": 2037,
+                    "fails": 0
+                }
+            }
+    }
+}

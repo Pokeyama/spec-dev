@@ -1,0 +1,47 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gasha_system
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --local-infile=1
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  memcached:
+    image: memcached:1.6
+    ports:
+      - "11211:11211"
+
+  api:
+    build: .
+    depends_on:
+      mysql:
+        condition: service_healthy
+      memcached:
+        condition: service_started
+    environment:
+      ADDR: ":8080"
+      DB_USER: root
+      DB_PASS: root
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_NAME: gasha_system
+      MEMCACHED_ADDR: memcached:11211
+      SESSION_TTL_HOURS: "24"
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:
