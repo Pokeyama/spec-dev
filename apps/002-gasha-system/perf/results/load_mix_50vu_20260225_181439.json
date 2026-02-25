@@ -1,0 +1,203 @@
+{
+    "root_group": {
+        "checks": {
+            "mix user regist 201": {
+                "path": "::mix user regist 201",
+                "id": "c2b34233ad10d3ff0d541d3246f2632a",
+                "passes": 5504,
+                "fails": 0,
+                "name": "mix user regist 201"
+            },
+            "mix user login 200": {
+                "name": "mix user login 200",
+                "path": "::mix user login 200",
+                "id": "30d86333e19dd803457446a8389b0c8a",
+                "passes": 5504,
+                "fails": 0
+            },
+            "mix user token": {
+                "id": "75f28180a77f000ef29440f741d9c39c",
+                "passes": 5504,
+                "fails": 0,
+                "name": "mix user token",
+                "path": "::mix user token"
+            },
+            "mix admin regist 201": {
+                "id": "88b044f1033bb514a55a5443867328fe",
+                "passes": 677,
+                "fails": 0,
+                "name": "mix admin regist 201",
+                "path": "::mix admin regist 201"
+            },
+            "mix user gasha 200": {
+                "passes": 5504,
+                "fails": 0,
+                "name": "mix user gasha 200",
+                "path": "::mix user gasha 200",
+                "id": "d685e9aed0a1724e6a2bb0c77d944010"
+            },
+            "mix admin login 200": {
+                "passes": 677,
+                "fails": 0,
+                "name": "mix admin login 200",
+                "path": "::mix admin login 200",
+                "id": "3183ec4610e8ead58f468f0d3920573b"
+            },
+            "mix admin token": {
+                "name": "mix admin token",
+                "path": "::mix admin token",
+                "id": "29534bb6b3fbb002c5883343e26a0693",
+                "passes": 677,
+                "fails": 0
+            },
+            "mix admin list 200": {
+                "name": "mix admin list 200",
+                "path": "::mix admin list 200",
+                "id": "637bfea11cc523636f5457ab0ceaba87",
+                "passes": 677,
+                "fails": 0
+            },
+            "mix user inventory 200": {
+                "name": "mix user inventory 200",
+                "path": "::mix user inventory 200",
+                "id": "acbdb2cfb010c53e6030b63e3a911ebf",
+                "passes": 5504,
+                "fails": 0
+            },
+            "mix admin detail 200": {
+                "path": "::mix admin detail 200",
+                "id": "78d5c49cd1342cb31e185e01cc988c97",
+                "passes": 677,
+                "fails": 0,
+                "name": "mix admin detail 200"
+            },
+            "mix user logout 200": {
+                "name": "mix user logout 200",
+                "path": "::mix user logout 200",
+                "id": "04987ef17bb2064aa77a3e1fa1af4a34",
+                "passes": 5504,
+                "fails": 0
+            }
+        },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {}
+    },
+    "metrics": {
+        "http_reqs": {
+            "count": 30228,
+            "rate": 3004.3799572064304
+        },
+        "http_req_duration": {
+            "p(95)": 39.019141449999985,
+            "avg": 16.49097145729128,
+            "min": 0.27,
+            "med": 15.376875,
+            "max": 105.682209,
+            "p(90)": 32.725929300000004,
+            "thresholds": {
+                "p(95)<700": false
+            }
+        },
+        "http_req_tls_handshaking": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0
+        },
+        "iterations": {
+            "count": 6181,
+            "rate": 614.3334827144682
+        },
+        "http_req_sending": {
+            "avg": 0.007937940386396567,
+            "min": 0.001291,
+            "med": 0.003542,
+            "max": 4.570917,
+            "p(90)": 0.010416,
+            "p(95)": 0.016526649999999945
+        },
+        "vus": {
+            "value": 50,
+            "min": 50,
+            "max": 50
+        },
+        "http_req_connecting": {
+            "avg": 0.0028592268095805214,
+            "min": 0,
+            "med": 0,
+            "max": 2.391917,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_sent": {
+            "count": 5400240,
+            "rate": 536733.2546018411
+        },
+        "data_received": {
+            "count": 387435233,
+            "rate": 38507431.809607096
+        },
+        "http_req_blocked": {
+            "avg": 0.007676187905253507,
+            "min": 0.000416,
+            "med": 0.001125,
+            "max": 4.445666,
+            "p(90)": 0.003208,
+            "p(95)": 0.00425
+        },
+        "vus_max": {
+            "min": 50,
+            "max": 50,
+            "value": 50
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 16.49097145729128,
+            "min": 0.27,
+            "med": 15.376875,
+            "max": 105.682209,
+            "p(90)": 32.725929300000004,
+            "p(95)": 39.019141449999985
+        },
+        "iteration_duration": {
+            "p(90)": 107.154416,
+            "p(95)": 117.106167,
+            "avg": 81.17813816663974,
+            "min": 31.651375,
+            "med": 78.715291,
+            "max": 171.980084
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 30228,
+            "thresholds": {
+                "rate<0.0001": false
+            },
+            "value": 0
+        },
+        "http_req_waiting": {
+            "med": 15.322291499999999,
+            "max": 105.66575,
+            "p(90)": 32.67389560000001,
+            "p(95)": 38.933148149999994,
+            "avg": 16.4428265929272,
+            "min": 0.263375
+        },
+        "http_req_receiving": {
+            "min": 0.003375,
+            "med": 0.013208,
+            "max": 16.593792,
+            "p(90)": 0.047958,
+            "p(95)": 0.09223564999999995,
+            "avg": 0.04020692397776858
+        },
+        "checks": {
+            "passes": 36409,
+            "fails": 0,
+            "value": 1
+        }
+    }
+}
