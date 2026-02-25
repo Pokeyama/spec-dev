@@ -1,12 +1,13 @@
-# 002: Gasha System (Create + List) - Implementation Log v1.7
+# 002: Gasha System (Create + List) - Implementation Log v1.8
 
 ## 1. Status
 - Current Phase: Completed
-- Code Directory: `/Users/motiyama/spec-dev/apps/002-gasha-system`
+- Code Directory: `apps/gasha-system`
 - Source Specs:
   - `requirements.md`
   - `design.md`
   - `tasks.md`
+  - `ui-spec.md`
 
 ## 2. Progress
 - [x] 実装ディレクトリ作成
@@ -26,19 +27,21 @@
 - [x] バックエンドAPIテスト追加（正常系/異常系/期限切れ）
 - [x] k6負荷テスト実測（50並列）
 - [x] フロントテスト追加（画面遷移/API失敗表示/セッションガード/レスポンシブ確認）
+- [x] UI Spec v1.1 差分実装（User表示排他 / Admin詳細表示導線）
+- [x] UI Spec v1.1 差分テスト追加（vitest）
 
 ## 3. Decisions
-- バックエンド実装は `apps/002-gasha-system` に集約する
+- バックエンド実装は `apps/gasha-system` に集約する
 - 先に「起動できる最小API」を作ってから機能を積み上げる
 - `tasks.md` の順序に沿って進める
 
 ## 4. Implementation Notes
 - 実装配置:
-  - backend: `apps/002-gasha-system/cmd`, `apps/002-gasha-system/internal`
-  - frontend: `apps/002-gasha-system/frontend`
-  - reward seed: `apps/002-gasha-system/seed/pokemonList.csv`
-  - mysql init: `apps/002-gasha-system/sql/10_schema.sql`, `apps/002-gasha-system/sql/20_seed_rewards.sh`
-  - k6: `apps/002-gasha-system/perf/k6`
+  - backend: `apps/gasha-system/cmd`, `apps/gasha-system/internal`
+  - frontend: `apps/gasha-system/frontend`
+  - reward seed: `apps/gasha-system/seed/pokemonList.csv`
+  - mysql init: `apps/gasha-system/sql/10_schema.sql`, `apps/gasha-system/sql/20_seed_rewards.sh`
+  - k6: `apps/gasha-system/perf/k6`
 - 実装済みエンドポイント:
   - `POST /regist`, `GET /llogin`, `GET /logout`, `GET /inventory`
   - `POST /gasha`, `POST /gasha/ten`
@@ -46,13 +49,15 @@
 - エラーフォーマットを `{\"error\":{\"code\",\"message\"}}` に統一
 - 永続化は MySQL、セッションは memcached を利用する実装へ切り替え済み
 - `Draw` はDBトランザクションで `credit` 更新と `reward_history` 追加を一括処理
+- User画面は `viewMode` で `Last Rewards` / `Inventory` を排他表示
+- Admin画面は `viewMode` で一覧・詳細を切替し、一覧行のIDボタンから詳細へ遷移
 
 ## 5. Verification Log
 - `GOCACHE=/tmp/go-cache GOTMPDIR=/tmp go test ./...` 実行
   - 結果: `gashasystem/internal/server` のAPIテストを含めてPASS
 - `docker compose config` 実行
   - 結果: compose定義の構文解決OK（`api/mysql/memcached`）
-- `docker compose up -d mysql` 実行（`apps/002-gasha-system`）
+- `docker compose up -d mysql` 実行（`apps/gasha-system`）
   - 結果: `accounts`, `rewards`, `reward_history` が作成されることを確認
   - 結果: `SELECT COUNT(*) FROM rewards` が `1025`（CSVシード投入成功）
 - 文字化け対策
@@ -75,6 +80,9 @@
   - `npm run test` -> `5 files / 9 tests` PASS
   - `npm run build` -> 成功
   - `npm run dev -- --host 127.0.0.1 --port 5173` 起動確認（`/` のHTML取得OK）
+  - UI Spec v1.1 差分反映後
+    - `npm run test` -> `5 files / 11 tests` PASS
+    - `npm run build` -> 成功
 - k6:
   - スクリプト配置完了（`perf/k6/*.js`）
   - Docker経由で短時間実測（`DURATION=5s`, `USER_VUS=5`, `ADMIN_VUS=1`）
@@ -82,7 +90,7 @@
   - Docker経由で50並列実測（`DURATION=10s`, `USER_VUS=45`, `ADMIN_VUS=5`）
     - `http_req_failed`: `0.00%`（閾値 `rate<0.0001` を満たす）
     - `p(95)` latency: `39.01ms`
-    - summary: `apps/002-gasha-system/perf/results/load_mix_50vu_20260225_181439.json`
+    - summary: `apps/gasha-system/perf/results/load_mix_50vu_20260225_181439.json`
 - 手動確認:
   - user / admin の主要導線をブラウザで確認済み（2026-02-25）
   - 要件を満たすことを確認

@@ -6,13 +6,13 @@
 
 ## 3. Implementation Notes
 - Go module 初期化: `go mod init noteapi`
-- 実装コード配置: `apps/001-note-api/`
+- 実装コード配置: `apps/note-api/`
 - 追加ファイル:
-  - `apps/001-note-api/main.go`（`:8080` でサーバー起動）
-  - `apps/001-note-api/note.go`（`Note` モデル）
-  - `apps/001-note-api/store.go`（インメモリ保持、ID採番、50件上限）
-  - `apps/001-note-api/server.go`（`POST /notes`, `GET /notes`, エラー応答）
-  - `apps/001-note-api/server_test.go`（要件対応テスト）
+  - `apps/note-api/main.go`（`:8080` でサーバー起動）
+  - `apps/note-api/note.go`（`Note` モデル）
+  - `apps/note-api/store.go`（インメモリ保持、ID採番、50件上限）
+  - `apps/note-api/server.go`（`POST /notes`, `GET /notes`, エラー応答）
+  - `apps/note-api/server_test.go`（要件対応テスト）
 - 実装方針:
   - タイトルは `strings.TrimSpace` 後に 1〜50 文字（rune数）で検証
   - `GET /notes` は新しい順で返却

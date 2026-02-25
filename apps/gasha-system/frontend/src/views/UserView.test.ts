@@ -75,4 +75,31 @@ describe('UserView', () => {
     expect(vi.mocked(api.gasha)).toHaveBeenCalledWith('user-token')
     expect(wrapper.text()).toContain('insufficient diamonds')
   })
+
+  it('switches display mode between gasha rewards and inventory', async () => {
+    const { wrapper, auth } = mountView()
+    auth.setUserToken('user-token')
+
+    vi.mocked(api.gasha).mockResolvedValue({
+      consumedCredit: 10,
+      remainingCredit: 990,
+      rewards: [{ name: 'Pikachu' }]
+    })
+    vi.mocked(api.inventory).mockResolvedValue({
+      credit: 990,
+      items: [{ name: 'Bulbasaur', count: 2 }]
+    })
+
+    await clickButtonByText(wrapper, 'POST /gasha')
+    await flushPromises()
+
+    expect(wrapper.find('[data-testid="rewards-panel"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="inventory-panel"]').exists()).toBe(false)
+
+    await clickButtonByText(wrapper, 'GET /inventory')
+    await flushPromises()
+
+    expect(wrapper.find('[data-testid="inventory-panel"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="rewards-panel"]').exists()).toBe(false)
+  })
 })

@@ -73,4 +73,31 @@ describe('AdminView', () => {
     expect(vi.mocked(api.accountList)).toHaveBeenCalledWith('admin-token')
     expect(wrapper.text()).toContain('admin role required')
   })
+
+  it('opens detail from account list row button and hides list panel', async () => {
+    const { wrapper, auth } = mountView()
+    auth.setAdminToken('admin-token')
+
+    vi.mocked(api.accountList).mockResolvedValue({
+      accounts: [
+        { account_id: 1, login_id: 'alice', credit: 990, createdAt: '2026-02-25T00:00:00Z' }
+      ]
+    })
+    vi.mocked(api.accountDetail).mockResolvedValue({
+      account_id: 1,
+      login_id: 'alice',
+      rewards: [{ name: 'Pikachu', obtainedAt: '2026-02-25T00:00:00Z' }]
+    })
+
+    await clickButtonByText(wrapper, 'GET /account/list')
+    await flushPromises()
+    expect(wrapper.find('[data-testid="admin-list-panel"]').exists()).toBe(true)
+
+    await wrapper.find('[data-testid="detail-btn-1"]').trigger('click')
+    await flushPromises()
+
+    expect(vi.mocked(api.accountDetail)).toHaveBeenCalledWith('admin-token', 1)
+    expect(wrapper.find('[data-testid="admin-list-panel"]').exists()).toBe(false)
+    expect(wrapper.find('[data-testid="admin-detail-panel"]').exists()).toBe(true)
+  })
 })
