@@ -3,28 +3,28 @@
 ## Backend (host run)
 
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 GOCACHE=/tmp/go-cache GOTMPDIR=/tmp go run ./cmd/api
 ```
 
 ## Backend infra (Docker)
 
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 docker compose up -d mysql memcached
 ```
 
 API + infra all-in-one:
 
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 docker compose up -d --build
 ```
 
 ## Frontend (host run)
 
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system/frontend
+cd apps/gasha-system/frontend
 npm install
 npm test
 npm run dev
@@ -71,7 +71,7 @@ curl -s -H "Authorization: Bearer ${ADMIN_TOKEN}" \
 ## k6 (load test)
 
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 k6 run perf/k6/user_flow.js
 k6 run perf/k6/admin_flow.js
 k6 run perf/k6/load_mix.js

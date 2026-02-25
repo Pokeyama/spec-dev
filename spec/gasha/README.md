@@ -1,23 +1,23 @@
 # 002 Usage
 
 ## 実装コード
-- `/Users/motiyama/spec-dev/apps/002-gasha-system`
+- `apps/gasha-system`
 
 ## サーバー起動（ホスト）
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 GOCACHE=/tmp/go-cache GOTMPDIR=/tmp go run ./cmd/api
 ```
 
 ## インフラ起動（Docker: MySQL/memcached）
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 docker compose up -d mysql memcached
 ```
 
 ## フロント起動（ホスト）
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system/frontend
+cd apps/gasha-system/frontend
 npm install
 npm test
 npm run dev
@@ -52,7 +52,7 @@ curl -s -H "Authorization: Bearer ${ADMIN_TOKEN}" http://127.0.0.1:8080/account/
 
 ## 負荷試験（k6）
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 k6 run perf/k6/load_mix.js
 ```
 

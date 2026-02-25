@@ -1,7 +1,8 @@
-# 002: Gasha System (Create + List) - Tasks v1.3
+# 002: Gasha System (Create + List) - Tasks v1.4
 
 ## 1. Requirements / Design Fix
 - [x] `requirements.md` と `design.md` の整合確認
+- [x] `ui-spec.md` を追加し、UI仕様は `ui-spec.md` を正として参照する方針を明記
 - [x] セッションキー方針を `session:{token}` に統一
 - [x] `accounts.role` を `ENUM('user','admin')` 方針で確定
 
@@ -56,6 +57,11 @@
 - [x] 管理者詳細画面実装（`GET /account/detail?id={account_id}`）
 - [x] `401/402/403` エラー表示を画面に反映
 
+## 8.1 Frontend Implementation (UI Spec v1.1 Delta)
+- [x] 管理画面で `account/list` の各行にID別の詳細表示ボタンを追加
+- [x] 管理画面で詳細表示中はアカウント一覧を非表示にする
+- [x] ユーザー画面で `Last Rewards` と `Inventory` の表示を排他にする
+
 ## 9. Error / Transaction
 - [x] エラーレスポンス形式を統一（`error.code`, `error.message`）
 - [x] ステータスコード運用を実装（400/401/402/403/404/409/500）
@@ -75,6 +81,7 @@
 - [x] API失敗時の表示テスト（`401/402/403`）
 - [x] セッション未保持時のガード挙動確認
 - [x] レスポンシブ確認（最低: モバイル幅 / デスクトップ幅）
+- [x] UI Spec v1.1 追加要件テスト（ユーザー表示排他、管理詳細表示）
 
 ## 12. Done Criteria
 - [x] `go test ./...` が通る
@@ -83,4 +90,4 @@
 - [x] `requirements.md` の AC-1 〜 AC-11 を満たす
 
 ## 13. Write Usage
-- [x] サーバー起動方法を`sdd/002-note-api`以下にREADME.mdとして書き込み
+- [x] サーバー起動方法を`spec/gasha`以下にREADME.mdとして書き込み

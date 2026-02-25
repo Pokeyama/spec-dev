@@ -16,7 +16,7 @@
 
 ## Run examples
 ```bash
-cd /Users/motiyama/spec-dev/apps/002-gasha-system
+cd apps/gasha-system
 
 # single user flow smoke
 k6 run perf/k6/user_flow.js
@@ -32,8 +32,8 @@ k6 run --summary-export perf/results/load_mix_summary.json perf/k6/load_mix.js
 
 # docker run (if local k6 is not installed)
 docker run --rm \
-  -v /Users/motiyama/spec-dev/apps/002-gasha-system/perf/k6:/scripts \
-  -v /Users/motiyama/spec-dev/apps/002-gasha-system/perf/results:/results \
+  -v apps/gasha-system/perf/k6:/scripts \
+  -v apps/gasha-system/perf/results:/results \
   grafana/k6 run \
   -e BASE_URL=http://host.docker.internal:8080 \
   --summary-export=/results/load_mix_summary.json \

@@ -7,5 +7,5 @@
 3. `tasks.md` を作る（作業分解）
 4. `implementation.md` を更新しながら実装 + テストを進める
 
-各テーマの仕様書は `sdd/specs/<id>-<theme>/` にまとめます。
-実装コードは `apps/<id>-<theme>/` に置きます。
+各テーマの仕様書は `spec/<theme>/` にまとめます。
+実装コードは `apps/<theme>/` に置きます。
